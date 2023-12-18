@@ -16,9 +16,6 @@ Steps to setup container on Windows:
 
 3) (optional) open your web browser and go to "http://localhost:7900/?autoconnect=1&resize=scale&password=secret" 
 
-
-How to use the script:
-
 Run the automation script:
 
 1) In your terminal, run command "python autopark.py"
