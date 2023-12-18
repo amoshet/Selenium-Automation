@@ -8,11 +8,12 @@ Steps to setup container on Windows:
 
 1) Open terminal session in the Selenium-Automation folder.
 
-#this will pull the selenium standalone image if needed and run it on port 4444 on your browser in detached mode with 2GB of memory.
-#it also maps port 7900 for noVNC, which allows you to see what is happening on the container
+#this will pull the selenium standalone image if needed and run it on port 4444 on your browser in detached mode with 2GB of memory. It also maps port 7900 for noVNC, which allows you to see what is happening on the container
+
 2) Run command "docker run -d -p 4444:4444 -p 7900:7900 --shm-size="2g" selenium/standalone-chrome:4.16.1-20231212" 
 
 #this allows you to view what is happening on the container when you run the script
+
 3) (optional) open your web browser and go to "http://localhost:7900/?autoconnect=1&resize=scale&password=secret" 
 
 
