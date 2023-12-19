@@ -14,8 +14,6 @@ Steps to setup container on Windows:
 
 ![container](https://i.imgur.com/eXpRWjk.png)
 
-#this allows you to view what is happening on the container when you run the script
-
 Run the automation script:
 
 1) In your terminal, run command "python autopark.py"
@@ -25,7 +23,7 @@ asked to input your information before the script runs and autocompletes your fo
 
 ![Autopark.py](https://i.imgur.com/6AYQKNr.png)
 
-3) (optional) open your web browser and go to "http://localhost:7900/?autoconnect=1&resize=scale&password=secret" 
+3) (optional) open your web browser and go to "http://localhost:7900/?autoconnect=1&resize=scale&password=secret" #this allows you to view what is happening on the container when you run the script
 
 ![site](https://i.imgur.com/8YHea9Q.png)
 
