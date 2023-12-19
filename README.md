@@ -10,11 +10,11 @@ Steps to setup container on Windows:
 
 #this will pull the selenium standalone image if needed and run it on port 4444 on your browser in detached mode with 2GB of memory. It also maps port 7900 for noVNC, which allows you to see what is happening on the container
 
-2) Run command "docker run -d -p 4444:4444 -p 7900:7900 --shm-size="2g" selenium/standalone-chrome:4.16.1-20231212" 
+2) Run command "docker run -d -p 4444:4444 -p 7900:7900 --shm-size="2g" selenium/standalone-chrome:4.16.1-20231212"
+
+![container](https://i.imgur.com/eXpRWjk.png)
 
 #this allows you to view what is happening on the container when you run the script
-
-3) (optional) open your web browser and go to "http://localhost:7900/?autoconnect=1&resize=scale&password=secret" 
 
 Run the automation script:
 
@@ -24,6 +24,8 @@ Run the automation script:
 asked to input your information before the script runs and autocompletes your form.
 
 ![Autopark.py](https://i.imgur.com/6AYQKNr.png)
+
+3) (optional) open your web browser and go to "http://localhost:7900/?autoconnect=1&resize=scale&password=secret" 
 
 ![site](https://i.imgur.com/8YHea9Q.png)
 
