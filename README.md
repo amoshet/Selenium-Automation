@@ -23,6 +23,8 @@ Run the automation script:
 2) Follow script instructions and input a number to permit park your car! If you select Add Car, you will be
 asked to input your information before the script runs and autocompletes your form.
 
+![Autopark.py](https://imgur.com/a/1UWj7US)
+
 Features Coming Soon:
 
 1) Database functionality so the script can remember your car!
