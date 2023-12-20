@@ -1,5 +1,4 @@
-# To run docker compose run this in terminal "docker-compose -f docker-compose.yml up -d"
-# For 4 max sessions use "docker-compose -f docker-compose.yml up -d --scale chrome=4"
+# To run docker compose run this in terminal "docker compose up -d"
 # To close all containers use "docker compose down"
 version: "3"
 services:
