@@ -101,9 +101,9 @@ for i in range(len(elem)):
 
 #submits form after 3 seconds and closes page
 time.sleep(3)
-#submitForm = browser.find_element(By.CLASS_NAME, "button")
-#submitForm.click()
-print("submit button during debugging")
+submitForm = browser.find_element(By.CLASS_NAME, "button")
+submitForm.click()
+#print("submit button during debugging")
 time.sleep(3)
 browser.quit()
 
