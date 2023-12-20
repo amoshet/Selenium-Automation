@@ -15,7 +15,7 @@ services:
       - SE_EVENT_BUS_HOST=selenium-hub
       - SE_EVENT_BUS_PUBLISH_PORT=4442
       - SE_EVENT_BUS_SUBSCRIBE_PORT=4443
-    #uncomment lines 18-19 if you would like to see the automation script
+    #uncomment lines 20-21 if you would like to see the automation script
     #running on the container (this feature only supports 1 container)
     #ports:
     #  - "7900:7900"
