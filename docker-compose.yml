@@ -3,6 +3,7 @@
 # To close all containers use "docker compose down"
 version: "3"
 services:
+  #first chrome container config
   chrome1:
     build:
       context: .
@@ -15,10 +16,12 @@ services:
       - SE_EVENT_BUS_HOST=selenium-hub
       - SE_EVENT_BUS_PUBLISH_PORT=4442
       - SE_EVENT_BUS_SUBSCRIBE_PORT=4443
-    #uncomment lines 20-21 if you would like to see the automation script
-    #running on the container (this feature only supports 1 container)
+    #go to "http://localhost:7900/?autoconnect=1&resize=scale&password=secret"
+    #to see what is happening on this container
     ports:
       - "7900:7900"
+      
+  #second chrome container config
   chrome2:
     build:
       context: .
@@ -31,8 +34,8 @@ services:
       - SE_EVENT_BUS_HOST=selenium-hub
       - SE_EVENT_BUS_PUBLISH_PORT=4442
       - SE_EVENT_BUS_SUBSCRIBE_PORT=4443
-    #uncomment lines 20-21 if you would like to see the automation script
-    #running on the container (this feature only supports 1 container)
+    #go to "http://localhost:7901/?autoconnect=1&resize=scale&password=secret"
+    #to see what is happening on this container
     ports:
       - "7901:7900"
 
