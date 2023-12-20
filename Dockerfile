@@ -8,7 +8,7 @@ WORKDIR /autopark
 
 COPY requirements.txt .
 
-RUN pip install -r requirements.txt
+RUN pip install --no-cache-dir -r requirements.txt
 
 #adds everything in folder from host to the container
 COPY . .

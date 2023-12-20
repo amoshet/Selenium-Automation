@@ -3,7 +3,7 @@
 # To close all containers use "docker compose down"
 version: "3"
 services:
-  chrome:
+  chrome1:
     build:
       context: .
       dockerfile: Dockerfile
@@ -17,8 +17,24 @@ services:
       - SE_EVENT_BUS_SUBSCRIBE_PORT=4443
     #uncomment lines 20-21 if you would like to see the automation script
     #running on the container (this feature only supports 1 container)
-    #ports:
-    #  - "7900:7900"
+    ports:
+      - "7900:7900"
+  chrome2:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: selenium/node-chrome:4.16.1-20231212
+    shm_size: 2gb
+    depends_on:
+      - selenium-hub
+    environment:
+      - SE_EVENT_BUS_HOST=selenium-hub
+      - SE_EVENT_BUS_PUBLISH_PORT=4442
+      - SE_EVENT_BUS_SUBSCRIBE_PORT=4443
+    #uncomment lines 20-21 if you would like to see the automation script
+    #running on the container (this feature only supports 1 container)
+    ports:
+      - "7901:7900"
 
   selenium-hub:
     image: selenium/hub:4.16.1-20231212
