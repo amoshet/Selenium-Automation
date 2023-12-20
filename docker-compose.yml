@@ -1,0 +1,27 @@
+# To run docker compose run this in terminal "docker-compose -f docker-compose.yml up -d"
+# For 4 max sessions use "docker-compose -f docker-compose.yml up -d --scale chrome=4"
+# To close all containers use "docker compose down"
+version: "3"
+services:
+  chrome:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: selenium/node-chrome:4.16.1-20231212
+    shm_size: 2gb
+    depends_on:
+      - selenium-hub
+    environment:
+      - SE_EVENT_BUS_HOST=selenium-hub
+      - SE_EVENT_BUS_PUBLISH_PORT=4442
+      - SE_EVENT_BUS_SUBSCRIBE_PORT=4443
+    #uncomment lines 18-19 if you would like to see the automation script
+    #running on the container (this feature only supports 1 container)
+    #ports:
+    #  - "7900:7900"
+
+  selenium-hub:
+    image: selenium/hub:4.16.1-20231212
+    container_name: selenium-hub
+    ports:
+      - "4444:4444"

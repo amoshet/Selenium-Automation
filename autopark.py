@@ -1,6 +1,6 @@
 from selenium import webdriver
 from selenium.webdriver.common.by import By
-from webdriver_manager.chrome import ChromeDriverManager
+from selenium.webdriver.common.keys import Keys
 from datetime import date, timedelta
 import time
 from email.message import EmailMessage
@@ -106,6 +106,7 @@ submitForm.click()
 #print("submit button during debugging")
 time.sleep(3)
 browser.quit()
+
 '''
 #s = smtplib.SMTP('smtp.gmail.com', 587)
 server = smtplib.SMTP_SSL('smtp.gmail.com', 587)
