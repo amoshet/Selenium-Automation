@@ -1,0 +1,3 @@
+selenium==4.0.0
+keyring
+mysql-connector-python==8.0.24

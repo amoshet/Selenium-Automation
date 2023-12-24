@@ -1,6 +1,6 @@
 from selenium import webdriver
 from selenium.webdriver.common.by import By
-from webdriver_manager.chrome import ChromeDriverManager
+from selenium.webdriver.common.keys import Keys
 from datetime import date, timedelta
 import time
 from email.message import EmailMessage
@@ -101,11 +101,12 @@ for i in range(len(elem)):
 
 #submits form after 3 seconds and closes page
 time.sleep(3)
-submitForm = browser.find_element(By.CLASS_NAME, "button")
-submitForm.click()
-#print("submit button during debugging")
+#submitForm = browser.find_element(By.CLASS_NAME, "button")
+#submitForm.click()
+print("submit button during debugging")
 time.sleep(3)
 browser.quit()
+
 '''
 #s = smtplib.SMTP('smtp.gmail.com', 587)
 server = smtplib.SMTP_SSL('smtp.gmail.com', 587)

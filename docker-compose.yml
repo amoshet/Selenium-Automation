@@ -1,0 +1,83 @@
+# To run docker compose run this in terminal "docker compose up -d"
+# To close all containers use "docker compose down"
+version: "3"
+services:
+  #first chrome container config
+  chrome1:
+    container_name: chrome1
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: selenium/node-chrome:4.16.1-20231212
+    shm_size: 2gb
+    depends_on:
+      - selenium-hub
+    environment:
+      - SE_EVENT_BUS_HOST=selenium-hub
+      - SE_EVENT_BUS_PUBLISH_PORT=4442
+      - SE_EVENT_BUS_SUBSCRIBE_PORT=4443
+    #go to "http://localhost:7900/?autoconnect=1&resize=scale&password=secret"
+    #to see what is happening on this container
+    ports:
+      - "7900:7900"
+      
+  #second chrome container config
+  chrome2:
+    container_name: chrome2
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: selenium/node-chrome:4.16.1-20231212
+    shm_size: 2gb
+    depends_on:
+      - selenium-hub
+    environment:
+      - SE_EVENT_BUS_HOST=selenium-hub
+      - SE_EVENT_BUS_PUBLISH_PORT=4442
+      - SE_EVENT_BUS_SUBSCRIBE_PORT=4443
+    #go to "http://localhost:7901/?autoconnect=1&resize=scale&password=secret"
+    #to see what is happening on this container
+    ports:
+      - "7901:7900"
+
+  selenium-hub:
+    image: selenium/hub:4.16.1-20231212
+    container_name: selenium-hub
+    ports:
+      - "4444:4444"
+  
+  mysql:
+    container_name: mysql
+    image: mysql:8.0.24
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: carsDB
+    volumes:
+      - mysql-data:/var/lib/mysql
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+    ports:
+      - "3306:3306"
+    networks:
+      - mysql_network
+      
+  phpmyadmin:
+    container_name: phpmyadmin
+    depends_on:
+      - mysql
+    image: phpmyadmin/phpmyadmin:5.2.1
+    environment:
+      DB_HOST: mysql
+      PHP_PORT: 3306
+      PHP_USER: root
+      PHP_PASSWORD: root
+    ports:
+      - "8080:80"
+    networks:
+      - mysql_network
+      
+volumes:
+  mysql-data:
+  
+networks:
+  mysql_network:
+      
