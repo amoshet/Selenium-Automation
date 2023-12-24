@@ -4,6 +4,7 @@ version: "3"
 services:
   #first chrome container config
   chrome1:
+    container_name: chrome1
     build:
       context: .
       dockerfile: Dockerfile
@@ -22,6 +23,7 @@ services:
       
   #second chrome container config
   chrome2:
+    container_name: chrome2
     build:
       context: .
       dockerfile: Dockerfile
@@ -43,3 +45,39 @@ services:
     container_name: selenium-hub
     ports:
       - "4444:4444"
+  
+  mysql:
+    container_name: mysql
+    image: mysql:8.0.24
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: carsDB
+    volumes:
+      - mysql-data:/var/lib/mysql
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+    ports:
+      - "3306:3306"
+    networks:
+      - mysql_network
+      
+  phpmyadmin:
+    container_name: phpmyadmin
+    depends_on:
+      - mysql
+    image: phpmyadmin/phpmyadmin:5.2.1
+    environment:
+      DB_HOST: mysql
+      PHP_PORT: 3306
+      PHP_USER: root
+      PHP_PASSWORD: root
+    ports:
+      - "8080:80"
+    networks:
+      - mysql_network
+      
+volumes:
+  mysql-data:
+  
+networks:
+  mysql_network:
+      
